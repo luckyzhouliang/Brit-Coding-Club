@@ -69,7 +69,19 @@ def forge():
 def index():
     user = User.query.first()
     movies = Movie.query.all()
-    return render_template('index.html', movies=movies, user=user)
+    return render_template('index.html', movies=movies)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    user = User.query.first()
+    return render_template('404.html'), 404
+
+
+@app.context_processor
+def inject_user():
+    user = User.query.first()
+    return dict(user=user)
 
 
 if __name__ == '__main__':
