@@ -3,11 +3,22 @@
     <p>
         {{ movies|length }} Titles
     </p>
+
+    <form method="post">
+        Name <input type="text" name="title" autocomplete="off" required>
+        Year <input type="text" name="year" autocomplete="off" required>
+        <input class="btn" type="submit" name="submit" value="add">
+    </form>
+
     <ul class="movie-list">
         {% for movie in movies %}
         <li>
             {{ movie.title }} - {{ movie.year }}
             <span class="float-right">
+                <a class="btn" href="{{ url_for('edit',movie_id=movie.id) }}">Edit</a>
+                <form class="inline-form" method="post" action="{{ url_for('delete',movie_id=movie.id) }}">
+                    <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you Sure?')">
+                </form>
                 <a class="imdb" href="https://www.imdb.com/find?q={{ movie.title }}" target="_blank" title="Find this movie in IMDB">IMDB</a>
             </span>
         </li>
