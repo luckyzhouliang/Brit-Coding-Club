@@ -134,3 +134,102 @@ input[name=year] {
 .inline-form {
     display: inline;
 }
+
+
+/*留言表单样式*/
+/* 整个表单样式 */
+.comment-form {
+  /*max-width: 500px;*/
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f1f8f5;         /* 淡绿色背景 */
+  border: 2px solid #d1e7dd;         /* 浅绿色边框 */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* 标签样式 */
+.comment-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #155724;
+}
+
+/* 输入框和文本域样式 */
+.comment-form input[type="text"],
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #b6d4ce;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1em;
+  color: #495057;
+  transition: border-color 0.3s ease;
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form textarea:focus {
+  border-color: #28a745;             /* 聚焦时边框变亮 */
+  outline: none;
+}
+
+/*!* 按钮样式 *!*/
+/*.btn {*/
+/*  background-color: #28a745;         !* 按钮背景色 *!*/
+/*  color: white;*/
+/*  padding: 10px 20px;*/
+/*  font-size: 1em;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/
+
+/*.btn:hover {*/
+/*  background-color: #218838;         !* 悬停时的按钮背景色 *!*/
+/*}*/
+
+
+.comment {
+  border: 2px solid #d1e7dd;           /* 浅绿色边框 */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #e9f7ef;           /* 明亮的淡绿色背景 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Arial', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+.comment:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* 悬停时加深阴影效果 */
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #b6d4ce;    /* 浅绿色分割线 */
+  padding-bottom: 8px;
+}
+
+.comment-name {
+  font-weight: bold;
+  color: #155724;                      /* 深绿色字体 */
+  font-size: 1.1em;
+}
+
+.comment-time {
+  font-size: 0.9em;
+  color: #6c757d;                      /* 灰色时间字体 */
+}
+
+.comment-body {
+  font-size: 1em;
+  color: #2f4f4f;                      /* 深灰绿色字体 */
+  line-height: 1.6;
+}

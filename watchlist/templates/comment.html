@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>留言</h3>
+<form method="post" class="comment-form">
+  <label for="name">姓名</label>
+  <input type="text" id="name" name="name" autocomplete="off" required>
+
+  <label for="message">留言内容</label>
+  <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
+
+  <input class="btn" type="submit" name="submit" value="提交">
+</form>
+
+
+    {% for record in comments %}
+        <div class="comment">
+            <div class="comment-header">
+                <span class="comment-name">{{ record.name }}</span>
+                <span class="comment-time">{{ record.timestamp.strftime('%Y-%m-%d')}}</span>
+             </div>
+            <div class="comment-body">
+                {{ record.message }}
+             </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

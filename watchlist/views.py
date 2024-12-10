@@ -1,8 +1,10 @@
-from watchlist import app,db
+from watchlist import app, db
 from flask import request, url_for, flash, redirect
 from flask_login import login_user, logout_user, login_required, current_user
 from flask import render_template
-from watchlist.models import User,Movie
+from watchlist.models import User, Movie, Comment
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -78,7 +80,7 @@ def settings():
 @app.route('/movie/edit/<int:movie_id>', methods=['GET', 'POST'])
 @login_required
 def edit(movie_id):
-    movie= db.session.get(Movie,movie_id)
+    movie = db.session.get(Movie, movie_id)
 
     if request.method == 'POST':
         title = request.form.get('title')
@@ -99,9 +101,26 @@ def edit(movie_id):
 @app.route('/movie/delete/<int:movie_id>', methods=['POST'])
 @login_required
 def delete(movie_id):
-    movie= db.session.get(Movie,movie_id)
+    movie = db.session.get(Movie, movie_id)
 
     db.session.delete(movie)
     db.session.commit()
     flash('Item deleted.')
     return redirect(url_for('index'))
+
+
+@app.route('/comment', methods=['GET', 'POST'])
+def comment():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        message = request.form.get('message')
+        if not name or len(name) > 20:
+            flash('Invalid input!')
+            return redirect(url_for('comment'))
+        record = Comment(name=name, message=message)
+        db.session.add(record)
+        db.session.commit()
+        flash('Comment created.')
+        return redirect(url_for('comment'))
+    comments = Comment.query.all()
+    return render_template('comment.html', comments=comments)
